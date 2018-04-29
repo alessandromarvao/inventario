@@ -2,12 +2,12 @@
 <html lang="pt-br">
 <head>
 	<meta charset="utf-8">
-	<title>Exibindo Itens</title>
+	<title>Inventário - Campus Barreirinhas</title>
 	<link rel="stylesheet" href="/css/app.css">
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-static-top">
+	<nav class="navbar navbar-inverse navbar-static-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">

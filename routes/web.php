@@ -11,14 +11,21 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () 
+{
     // return view('welcome');
 	return view('teste');
 });
 
 // Route::get('item/show', 'ItemController@index')->name('show');
 
-Route::get('/itens', 'ItemController@index')->name('show');
-Route::resource('item', 'ItemController');
+Route::prefix('item')->group(function()
+{
+    Route::resource('/', 'ItemController');
+    Route::match(['get', 'post'],'/find', 'ItemController@search')->name('itens.search');
+});
 
-// Route::resource('/itens/{id}', 'ItemController');
+Route::prefix('sala')->group(function(){
+    Route::resource('/', 'SalaController');
+    Route::match(['get', 'post'],'/find', 'SalaController@search')->name('salas.search');
+});

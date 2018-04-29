@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Sala;
 
 class SalaController extends Controller
 {
@@ -13,7 +14,9 @@ class SalaController extends Controller
      */
     public function index()
     {
-        //
+        $salas = Sala::orderBy('predio')->paginate(10);
+
+        return view('salas.index', compact('salas'));
     }
 
     /**
@@ -46,6 +49,15 @@ class SalaController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        
+        $search = "%" . $request->input('search') . "%";
+        $field = $request->input('select') ;
+        $salas = Sala::where($field, 'like' , $search)->distinct()->paginate(10);
+        return view('salas.index')->with('salas', $salas);
     }
 
     /**

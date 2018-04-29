@@ -14,9 +14,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-		// $itens = Item::all();
-		$itens = Item::paginate(10);
-		return view('body', compact('itens'));
+        // $itens = Item::all();
+        $itens = Item::paginate(10);
+		return view('itens.index', compact('itens'));
         // return $itens->toJson(JSON_PRETTY_PRINT);
         // return datatables()->of($itens)->toJson();
     }
@@ -54,8 +54,21 @@ class ItemController extends Controller
         return $itens->toJson(JSON_PRETTY_PRINT);
     }
 
-	public function search($field, $search)
+    public function search(Request $request)
 	{
+        $search = "%" . $request->input('search') . "%";
+        $field = $request->input('select');
+        echo $field . "<br>";
+        if(!strcmp($field,'predio') || !strcmp($field,'sala'))
+        {
+            $itens = Item::select('itens.id', 'sala_id', 'tombamento', 'origem', 'descricao', 'num_serie', 'elemento_despesa', 'empenho', 'ug_empenho', 'data_entrada', 'nota_fiscal', 'data_nf', 'valor_inicial', 'valor_contabil', 'situacao', 'estado', 'responsavel', 'carga_contabil', 'status')
+            ->join('salas', 'itens.sala_id', '=', 'salas.id')
+            ->where('salas.'.$field, 'like', $search)->distinct()->paginate(10);
+        } else
+        {
+            $itens = Item::where($field, 'like' , $search)->distinct()->paginate(10);
+        }
+        return view('itens.index', compact('itens'));
 	}
 
     /**
