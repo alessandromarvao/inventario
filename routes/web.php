@@ -28,5 +28,5 @@ Route::resources([
 
 // Route::resource('/sala', 'SalaController');
 
-// Route::get('predios', 'SalaController@showPredios')->name('predios.get');
-// Route::get('salas/{predio}', 'SalaController@showSalas')->name('salas.get');
+Route::get('predios', 'SalaController@showPredios')->name('predios.get');
+Route::get('salas/{predio}', 'SalaController@showSalas')->name('salas.get');

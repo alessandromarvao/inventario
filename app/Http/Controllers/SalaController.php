@@ -25,10 +25,10 @@ class SalaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function showPredios(){
-    //     $predios = Sala::select('predio')->distinct()->get();
-    //     return json_encode($predios);
-    // }
+    public function showPredios(){
+        $predios = Sala::select('predio')->distinct()->get();
+        return json_encode($predios);
+    }
 
     /**
      * Exibe as salas de acordo com o prédio selecionado
@@ -36,10 +36,10 @@ class SalaController extends Controller
      * @param string $predio
      * @return \Illuminate\Http\Response
      */
-    // public function showSalas($predio){
-    //     $salas = Sala::select('id', 'sala')->where('predio',$predio)->get();
-    //     return json_encode($salas);
-    // }
+    public function showSalas($predio){
+        $salas = Sala::select('id', 'sala')->where('predio',$predio)->get();
+        return json_encode($salas);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -59,7 +59,16 @@ class SalaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$input = [
+			'_method' => $request->input('_method'),
+			'_token' => $request->input('_token'),
+			'id' => $request->input('id'),
+			'predio' => $request->input('predio'),
+			'sala' => $request->input('sala')
+		];
+		Sala::create($input);
+
+		return response()->redirectToRoute('salas.index');
     }
 
     /**
@@ -91,7 +100,8 @@ class SalaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sala = Sala::findOrFail($id);
+        return view('salas.edit', compact('sala'));
     }
 
     /**

@@ -1,3 +1,4 @@
+//Exibe os prédios cadatrados e armazena em um campo select
 $('document').ready(function(){
     $.get('/predios/', function(predios){
         $.each(JSON.parse(predios), function(key, value){
@@ -5,6 +6,7 @@ $('document').ready(function(){
         });
     });
 });
+
 // $('select[name=predio]').change(function(){
-//     var 
+//     var
 // });
