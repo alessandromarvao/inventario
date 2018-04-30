@@ -23,5 +23,5 @@ Route::post('/item/find', 'ItemController@search')->name('item.search');
 Route::resource('/sala', 'SalaController');
 Route::post('/sala/find', 'SalaController@search')->name('sala.search');
 
-Route::get('teste/predio', 'SalaController@showPredios');
-Route::get('teste/sala/{predio}', 'SalaController@showSalas');
+Route::get('predios', 'SalaController@showPredios')->name('predios.get');
+Route::get('salas/{predio}', 'SalaController@showSalas')->name('salas.get');

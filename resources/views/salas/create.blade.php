@@ -7,5 +7,6 @@
 </form>
 @stop
 
-@push('scrpits')
+@push('scripts')
+<script type="text/javascript" src="/js/ajax.salas.js" charset="uft-8"></script>
 @endpush
