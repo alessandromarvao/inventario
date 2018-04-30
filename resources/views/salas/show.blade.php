@@ -15,7 +15,11 @@ if(!empty($nome[1])){
     <div class="panel-body">
         <a href="/sala" class="btn btn-sm btn-default">Voltar</a>
         <a href="{{ route('sala.edit', $sala->id) }}" class="btn btn-sm btn-default">Editar</a>
-        <a href="{{ route('sala.destroy', $sala->id) }}" class="btn btn-sm btn-info">Excluir</a>
+		<form class="form-horizontal" action="{{ route('sala.destroy', $sala->id) }}" method="post" style="display: inline-block">
+			{!! csrf_field() !!}
+			<input type="hidden" name="_method" value="DELETE" />
+        	<input type="submit" value="Remover" class="btn btn-sm btn-info" >
+		</form>
     </div>
 </div>
 <table class="table table-hover">
