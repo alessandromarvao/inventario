@@ -5,8 +5,8 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<label for="form">Pesquisar por:</label>
-        <form action="{{ route('sala.search') }}"  method="POST" class="form-inline form-width"id="form">
-			{!! csrf_field() !!}
+        <form action="{{ route('sala.search') }}"  method="GET" class="form-inline form-width"id="form">
+			{{-- {!! csrf_field() !!} --}}
 			<select class="form-control" name="select">
 				<option value="predio">Prédio</option>
 				<option value="sala">Sala</option>

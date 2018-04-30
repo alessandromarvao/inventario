@@ -62,10 +62,10 @@ class ItemController extends Controller
         {
             $itens = Item::select('itens.id', 'sala_id', 'tombamento', 'origem', 'descricao', 'num_serie', 'elemento_despesa', 'empenho', 'ug_empenho', 'data_entrada', 'nota_fiscal', 'data_nf', 'valor_inicial', 'valor_contabil', 'situacao', 'estado', 'responsavel', 'carga_contabil', 'status')
             ->join('salas', 'itens.sala_id', '=', 'salas.id')
-            ->where('salas.'.$field, 'like', $search)->distinct()->paginate(10);
+            ->where('salas.'.$field, 'like', $search)->distinct()->paginate(25);
         } else
         {
-            $itens = Item::where($field, 'like' , $search)->distinct()->paginate(10);
+            $itens = Item::where($field, 'like' , $search)->distinct()->paginate(25);
         }
         return view('itens.index', compact('itens'));
 	}

@@ -11,17 +11,22 @@
 |
 */
 
-Route::get('/', function () 
+Route::get('/', function ()
 {
     // return view('welcome');
 	return view('teste');
 });
 
-Route::resource('item', 'ItemController');
-Route::post('/item/find', 'ItemController@search')->name('item.search');
+// Route::resource('item', 'ItemController');
+Route::get('/item/find', 'ItemController@search')->name('item.search');
+Route::get('/sala/find', 'SalaController@search')->name('sala.search');
 
-Route::resource('/sala', 'SalaController');
-Route::post('/sala/find', 'SalaController@search')->name('sala.search');
+Route::resources([
+	'item' => 'ItemController',
+	'sala' => 'SalaController'
+]);
 
-Route::get('predios', 'SalaController@showPredios')->name('predios.get');
-Route::get('salas/{predio}', 'SalaController@showSalas')->name('salas.get');
+// Route::resource('/sala', 'SalaController');
+
+// Route::get('predios', 'SalaController@showPredios')->name('predios.get');
+// Route::get('salas/{predio}', 'SalaController@showSalas')->name('salas.get');

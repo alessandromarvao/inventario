@@ -5,8 +5,8 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<label for="form">Pesquisar:</label>
-		<form action="{{ route('item.search') }} " method="POST" class="form-inline form-width"  id="form">
-			{!! csrf_field() !!}
+		<form action="{{ route('item.search') }} " method="GET" class="form-inline form-width"  id="form">
+			{{-- {!! csrf_field() !!} --}}
 			<select class="form-control" name="select">
 				<option value="predio">Prédio</option>
 				<option value="sala">Sala</option>
@@ -15,7 +15,7 @@
 			</select>
 			<input type="text" name="search" class="form-control">
 			<button type="submit" class="btn btn-success ">Pesquisar</button>
-			
+
 			@if(!strcmp(Route::currentRouteName(),'item.search'))
 			<a href="/item" class="btn btn-default">Limpar</a>
 			@endif

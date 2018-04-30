@@ -11,7 +11,7 @@ class SalaController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     * 
+     *
      */
     public function index()
     {
@@ -22,24 +22,24 @@ class SalaController extends Controller
 
     /**
      * Exibe os prédios cadastrados
-     * 
-     * @return \Illuminate\Http\Response 
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function showPredios(){
-        $predios = Sala::select('predio')->distinct()->get();
-        return json_encode($predios);
-    }
-    
+    // public function showPredios(){
+    //     $predios = Sala::select('predio')->distinct()->get();
+    //     return json_encode($predios);
+    // }
+
     /**
      * Exibe as salas de acordo com o prédio selecionado
-     * 
+     *
      * @param string $predio
-     * @return \Illuminate\Http\Response 
+     * @return \Illuminate\Http\Response
      */
-    public function showSalas($predio){
-        $salas = Sala::select('id', 'sala')->where('predio',$predio)->get();
-        return json_encode($salas);
-    }
+    // public function showSalas($predio){
+    //     $salas = Sala::select('id', 'sala')->where('predio',$predio)->get();
+    //     return json_encode($salas);
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -76,7 +76,7 @@ class SalaController extends Controller
 
     public function search(Request $request)
     {
-        
+
         $search = "%" . $request->input('search') . "%";
         $field = $request->input('select') ;
         $salas = Sala::where($field, 'like' , $search)->distinct()->paginate(10);
