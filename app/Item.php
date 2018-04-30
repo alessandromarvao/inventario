@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-	    protected $table = "itens";
+		protected $table = "itens";
 		public $incrementing = "false";
 		public $timestamps = "false";
 		protected $fillable = [

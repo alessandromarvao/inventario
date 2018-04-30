@@ -15,7 +15,7 @@ class ItemController extends Controller
     public function index()
     {
         // $itens = Item::all();
-        $itens = Item::paginate(10);
+        $itens = Item::paginate(25);
 		return view('itens.index', compact('itens'));
         // return $itens->toJson(JSON_PRETTY_PRINT);
         // return datatables()->of($itens)->toJson();
@@ -28,7 +28,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('itens.create');
     }
 
     /**
@@ -50,15 +50,14 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        $itens = Item::find($id);
-        return $itens->toJson(JSON_PRETTY_PRINT);
+        $item = Item::findOrFail($id);
+        return view('itens.show', compact('item'));
     }
 
     public function search(Request $request)
 	{
         $search = "%" . $request->input('search') . "%";
         $field = $request->input('select');
-        echo $field . "<br>";
         if(!strcmp($field,'predio') || !strcmp($field,'sala'))
         {
             $itens = Item::select('itens.id', 'sala_id', 'tombamento', 'origem', 'descricao', 'num_serie', 'elemento_despesa', 'empenho', 'ug_empenho', 'data_entrada', 'nota_fiscal', 'data_nf', 'valor_inicial', 'valor_contabil', 'situacao', 'estado', 'responsavel', 'carga_contabil', 'status')

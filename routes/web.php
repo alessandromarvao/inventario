@@ -17,15 +17,11 @@ Route::get('/', function ()
 	return view('teste');
 });
 
-// Route::get('item/show', 'ItemController@index')->name('show');
+Route::resource('item', 'ItemController');
+Route::post('/item/find', 'ItemController@search')->name('item.search');
 
-Route::prefix('item')->group(function()
-{
-    Route::resource('/', 'ItemController');
-    Route::match(['get', 'post'],'/find', 'ItemController@search')->name('itens.search');
-});
+Route::resource('/sala', 'SalaController');
+Route::post('/sala/find', 'SalaController@search')->name('sala.search');
 
-Route::prefix('sala')->group(function(){
-    Route::resource('/', 'SalaController');
-    Route::match(['get', 'post'],'/find', 'SalaController@search')->name('salas.search');
-});
+Route::get('teste/predio', 'SalaController@showPredios');
+Route::get('teste/sala/{predio}', 'SalaController@showSalas');

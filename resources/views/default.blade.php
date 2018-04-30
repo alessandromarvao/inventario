@@ -16,7 +16,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#" >Não clique aqui</a>
+				<div class="navbar-left">
+					<a class="navbar-brand" href="#" >Home</a>
+				</div>
+				<div class="navbar-right">
+					<a class="navbar-brand" href="/sala">Salas</a>
+					<a class="navbar-brand" href="/item">Itens</a>
+				</div>
 			</div>
 		</div>
 	</nav>

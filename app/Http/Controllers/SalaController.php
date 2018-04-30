@@ -20,13 +20,34 @@ class SalaController extends Controller
     }
 
     /**
+     * Exibe os prédios cadastrados
+     * 
+     * @return \Illuminate\Http\Response 
+     */
+    public function showPredios(){
+        $predios = Sala::select('predio')->distinct()->get();
+        return json_encode($predios);
+    }
+    
+    /**
+     * Exibe as salas de acordo com o prédio selecionado
+     * 
+     * @param string $predio
+     * @return \Illuminate\Http\Response 
+     */
+    public function showSalas($predio){
+        $salas = Sala::select('id', 'sala')->where('predio',$predio)->get();
+        return json_encode($salas);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('salas.create');
     }
 
     /**
@@ -48,7 +69,8 @@ class SalaController extends Controller
      */
     public function show($id)
     {
-        //
+        $sala = Sala::findOrFail($id);
+        return view('salas.show', compact('sala'));
     }
 
     public function search(Request $request)

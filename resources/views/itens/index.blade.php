@@ -1,12 +1,12 @@
 @extends('default')
 
 @section('content')
-<h3>Itens</h3>
+<h3>Item</h3>
 <div class="panel panel-default">
 	<div class="panel-body">
 		<label for="form">Pesquisar:</label>
-		<form action="{{ route('itens.search') }} " method="GET" class="form-inline form-width"  id="form">
-			
+		<form action="{{ route('item.search') }} " method="POST" class="form-inline form-width"  id="form">
+			{!! csrf_field() !!}
 			<select class="form-control" name="select">
 				<option value="predio">Prédio</option>
 				<option value="sala">Sala</option>
@@ -16,11 +16,11 @@
 			<input type="text" name="search" class="form-control">
 			<button type="submit" class="btn btn-success ">Pesquisar</button>
 			
-			@if(!strcmp(Route::currentRouteName(),'itens.search'))
-				<a href="{{url()->previous()}}" class="btn btn-primary">Limpar</a>
+			@if(!strcmp(Route::currentRouteName(),'item.search'))
+			<a href="/item" class="btn btn-default">Limpar</a>
 			@endif
 		</form>
-		<h3>Itens</h3>
+		<a href="{{ route('item.create') }}" class="btn btn-sm btn-default btn-novo">Novo</a>
 		<table class="table table-responsive table-condensed table-striped table-hover">
 			<thead>
 				<tr>
@@ -29,6 +29,7 @@
 					<th>Sala</th>
 					<th>Tombamento</th>
 					<th>Descrição</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -39,6 +40,7 @@
 					<td>{{ $item->sala->sala }}</td>
 					<td>{{ $item->tombamento }}</td>
 					<td class="shorten">{{ $item->descricao }}</td>
+					<td><a href="{{route('item.show', $item->id)}}" class="btn btn-default btn-xs glyphicon glyphicon-plus"></a></td>
 				</tr>
 				@endforeach
 			</tbody>
@@ -54,7 +56,7 @@
 	$('.shorten').shorten({
 		moreText: 'extender',
 		lessText: 'recolher',
-		showChars: 90
+		showChars: 60
 	});
 </script>
 @endpush
