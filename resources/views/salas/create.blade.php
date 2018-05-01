@@ -8,5 +8,8 @@
 @stop
 
 @push('scripts')
-<script type="text/javascript" src="/js/ajax.salas.js" charset="uft-8"></script>
+<script type="text/javascript" src="/js/ajax.salas.js" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+	$('document').ready(predio);
+</script>
 @endpush

@@ -5,10 +5,12 @@
     <input type="text" name="id" id="id" class="form-control" value="{{ $item->id ?? '' }}" placeholder="Digite aqui o número da sala">
 </div>
 <div class="form-group">
+    <label for="predio">Predio:</label>
+    <select name="predio" id="predio" class="form-control"></select>
+</div>
+<div class="form-group">
     <label for="sala">Sala:</label>
-    <select name="sala" id="sala">
-    </select>
-    <input type="text" name="sala" id="sala" class="form-control" value="{{ $item->sala ?? '' }}" placeholder="Digite aqui descrição da sala">
+    <select name="sala" id="sala" class="form-control"></select>
 </div>
 <div class="form-group">
     <label for="predio">Tombamento:</label>
