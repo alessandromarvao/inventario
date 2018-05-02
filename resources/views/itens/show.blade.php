@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('content')
-<h3>Item <small>\ Exibir</small></h3>
+<h2>Item <small>\ Exibir</small></h2>
 <div class="panel panel-default">
     <div class="panel-body">
         <a href="/item" class="btn btn-sm btn-default">Voltar</a>

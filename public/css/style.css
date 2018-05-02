@@ -1,3 +1,26 @@
+body{
+	background-image: url('/img/notebook-pen-table-blank-158771.jpeg');
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+.page{
+	background-color: rgba(255,255,255, .5);
+	background-image: url(/img/ifma.png);
+	background-position: left 120px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+.left{
+	margin-top: -10px;
+	float: left;
+}
+.right{
+	margin-top: 15px;
+	float: right;
+}
 .form-width{
 	width: 100%;
 }
@@ -9,4 +32,8 @@
 .botton-line{
 	margin-top: -8px;
 	margin-bottom: 15px;
+}
+.buttom-index{
+	padding-top: 50px;
+	padding-bottom: 100px;
 }

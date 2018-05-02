@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('content')
-<h3>Item <small>\ Novo</small></h3>
+<h2>Item <small>\ Novo</small></h2>
 <form action="{{ route('item.store') }}" method="post">
     @include('itens.form')
 </form>

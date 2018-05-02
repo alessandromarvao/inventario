@@ -10,7 +10,7 @@ if(!empty($nome[1])){
 }
 @endphp
 
-<h3>{!! $texto !!} <small>\ Exibir</small></h3>
+<h2>{!! $texto !!} <small>\ Exibir</small></h2>
 <div class="panel panel-default">
     <div class="panel-body">
         <a href="/sala" class="btn btn-sm btn-default">Voltar</a>

@@ -14,7 +14,7 @@
 Route::get('/', function ()
 {
     // return view('welcome');
-	return view('teste');
+	return view('index');
 });
 
 // Route::resource('item', 'ItemController');

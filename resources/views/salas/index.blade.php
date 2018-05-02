@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('content')
-<h3>Salas</h3>
+<h2>Salas</h2>
 <div class="panel panel-default">
 	<div class="panel-body">
 		<label for="form">Pesquisar por:</label>

@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('content')
-<h3>Sala <small>\ Novo</small></h3>
+<h2>Sala <small>\ Novo</small></h2>
 <form action="{{ route('sala.store') }}" class="form" method="post">
     @include('salas.form');
 </form>

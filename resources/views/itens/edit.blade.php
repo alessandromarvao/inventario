@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('content')
-<h3>Item <small>\ Editar</small></h3>
+<h2>Item <small>\ Editar</small></h2>
 <form action="{{ route('item.update', $item->id) }}" class="form" method="post">
 	<input type="hidden" name="_method" value="PUT" />
     @include('itens.form');
