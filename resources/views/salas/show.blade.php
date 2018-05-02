@@ -18,7 +18,7 @@ if(!empty($nome[1])){
 		<form class="form-horizontal" action="{{ route('sala.destroy', $sala->id) }}" method="post" style="display: inline-block">
 			{!! csrf_field() !!}
 			<input type="hidden" name="_method" value="DELETE" />
-        	<input type="submit" value="Remover" class="btn btn-sm btn-info" >
+        	<input type="submit" value="Excluir" class="btn btn-sm btn-info" >
 		</form>
     </div>
 </div>

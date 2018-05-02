@@ -14,11 +14,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        // $itens = Item::all();
         $itens = Item::paginate(25);
 		return view('itens.index', compact('itens'));
-        // return $itens->toJson(JSON_PRETTY_PRINT);
-        // return datatables()->of($itens)->toJson();
     }
 
     /**
@@ -39,7 +36,17 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = new Item;
+        $item->id = $request->id;
+        $item->sala_id = $request->sala;
+        $item->tombamento = $request->tombamento;
+        $item->situacao = $request->situacao;
+        $item->estado = $request->estado;
+        $item->status = $request->status;
+
+        $item->save();
+
+        return response()->redirectToRoute('item.index');
     }
 
     /**
@@ -78,7 +85,8 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Item::findOrFail($id);
+        return view('itens.edit', compact('item'));
     }
 
     /**
@@ -90,7 +98,16 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $item = Item::findOrFail($id);
+        $item->sala_id = $request->sala;
+        $item->tombamento = $request->tombamento;
+        $item->situacao = $request->situacao;
+        $item->estado = $request->estado;
+        $item->status = $request->status;
+
+        $item->save();
+
+        return response()->redirectToRoute('item.index');
     }
 
     /**
@@ -101,6 +118,9 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Item::findOrFail($id);
+        $item->delete();
+
+        return response()->redirectToRoute('item.index');
     }
 }
