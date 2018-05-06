@@ -7,7 +7,7 @@
 </div>
 <div class="form-group">
     <label for="predio">Prédio:</label>
-    <input type="text" name="predio" id="predio" class="form-control" value="{{ $predio->predio ?? '' }}" placeholder="Digite aqui a identificação do prédio">
+    <input type="text" name="predio" id="predio" class="form-control" value="{{ $predio->predio ?? '' }}" placeholder="Digite aqui a identificação do prédio" required autocomplete="off">
 </div>
 <br>
 <div class="form-group">

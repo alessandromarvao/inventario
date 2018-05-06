@@ -31,7 +31,11 @@
 				@foreach($salas as $sala)
 				<tr>
 					<td>{{ $sala->id }}</td>
-					<td>{{ $sala->predio->predio }}</td>
+					@if(!empty($sala->predio->predio))
+						<td>{{ $sala->predio->predio }}</td>
+					@else 
+						<td>{{ $sala->predio }}</td>
+					@endif
 					<td>{{ $sala->sala }}</td>
 					<td><a href="{{ route('sala.show', $sala->id) }}" class="btn btn-xs btn-default glyphicon glyphicon-plus"></a></td>
 				</tr>

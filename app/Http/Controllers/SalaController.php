@@ -21,16 +21,6 @@ class SalaController extends Controller
     }
 
     /**
-     * Exibe os prédios cadastrados
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showPredios(){
-        $predios = Sala::select('predio')->distinct()->get();
-        return json_encode($predios);
-    }
-
-    /**
      * Exibe as salas de acordo com o prédio selecionado
      *
      * @param string $predio
@@ -59,14 +49,19 @@ class SalaController extends Controller
      */
     public function store(Request $request)
     {
-		$input = [
-			'_method' => $request->input('_method'),
-			'_token' => $request->input('_token'),
-			'id' => $request->input('id'),
-			'predio' => $request->input('predio'),
-			'sala' => $request->input('sala')
-		];
-		Sala::create($input);
+        $sala = new Sala;
+        $sala->predio_id = $request->input('predio');
+        $sala->sala = $request->input('sala');
+
+        $sala->save();
+
+		// $input = [
+		// 	'_method' => $request->input('_method'),
+		// 	'_token' => $request->input('_token'),
+		// 	'predio_id' => $request->input('predio'),
+		// 	'sala' => $request->input('sala')
+		// ];
+		// Sala::create($input);
 
 		return response()->redirectToRoute('sala.index');
     }
@@ -85,11 +80,25 @@ class SalaController extends Controller
 
     public function search(Request $request)
     {
-
         $search = "%" . $request->input('search') . "%";
         $field = $request->input('select') ;
-        $salas = Sala::where($field, 'like' , $search)->distinct()->paginate(10);
-        return view('salas.index')->with('salas', $salas);
+
+        switch ($field) {
+            case 'sala':
+            $salas = Sala::where($field, 'like' , $search)->distinct()->paginate(10);
+            return view('salas.index')->with('salas', $salas);
+            break;
+
+            case 'predio':
+            $salas = Sala::join('predios', 'predios.id', '=', 'salas.predio_id')
+                ->where('predios.predio', 'like', $search)
+                ->select('predios.*', 'salas.*')->paginate(10);
+            
+            // print_r($salas);
+            return view('salas.index')->with('salas', $salas);
+            break;
+        }
+
     }
 
     /**
@@ -119,7 +128,7 @@ class SalaController extends Controller
 			'_method' => $request->input('_method'),
 			'_token' => $request->input('_token'),
 			'id' => $request->input('id'),
-			'predio' => $request->input('predio'),
+			'predio_id' => $request->input('predio'),
 			'sala' => $request->input('sala')
 		];
 

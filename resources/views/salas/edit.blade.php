@@ -9,5 +9,19 @@
 @stop
 
 @push('scripts')
-<script type="text/javascript" src="/js/ajax.salas.js" charset="uft-8"></script>
+<script type="text/javascript" src="/js/ajax.salas.js" charset="utf-8"></script>
+<script charset="utf-8">
+    $('document').ready(function() {
+        $.get('/predios/', function(predios){
+            var id = {{ $sala->predio->id }};
+            $.each(JSON.parse(predios), function(key, value){
+                if(value.id==id){
+                    $('select[name=predio]').append("<option value='" + value.id + "' selected>" + value.predio + '</option>');
+                } else {
+                    $('select[name=predio]').append("<option value='" + value.id + "'>" + value.predio + '</option>');
+                }
+            });
+        });
+    });
+</script>
 @endpush

@@ -20,6 +20,16 @@ class PredioController extends Controller
     }
 
     /**
+     * Exibe os prédios cadastrados
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showPredios(){
+        $predios = Predio::get();
+        return json_encode($predios);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
