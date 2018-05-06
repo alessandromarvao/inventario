@@ -65,15 +65,45 @@ class ItemController extends Controller
 	{
         $search = "%" . $request->input('search') . "%";
         $field = $request->input('select');
-        if(!strcmp($field,'predio') || !strcmp($field,'sala'))
+        if(!strcmp($field,'predio'))
         {
-            $itens = Item::select('itens.id', 'sala_id', 'tombamento', 'origem', 'descricao', 'num_serie', 'elemento_despesa', 'empenho', 'ug_empenho', 'data_entrada', 'nota_fiscal', 'data_nf', 'valor_inicial', 'valor_contabil', 'situacao', 'estado', 'responsavel', 'carga_contabil', 'status')
-            ->join('salas', 'itens.sala_id', '=', 'salas.id')
-            ->where('salas.'.$field, 'like', $search)->distinct()->paginate(25);
+            $itens = Item::select('itens.id', 'sala_id', 'salas.sala', 'predios.predio', 'tombamento', 'descricao', 'descricao_sugerida', 'num_serie', 'valor_inicial', 'valor_contabil', 'estado', 'responsavel')
+            ->leftJoin('salas', 'itens.sala_id', 'salas.id')
+            ->leftJoin('predios', 'salas.predio_id', 'predios.id')
+            ->groupBy('itens.id')
+            ->where('predios.'.$field, 'like', $search)->paginate(25);
+            // $itens = Item::select('itens.*', 'salas.*', 'predios.*')
+            // ->Join('salas', 'itens.sala_id', '=', 'salas.id')
+            // ->Join('predios', 'salas.predio_id', '=', 'predios.id')
+            // ->where('predios.'.$field, 'like', $search)->paginate(25);
+        } 
+        elseif(!strcmp($field,'sala'))
+        {
+            $itens = Item::select('itens.id', 'sala_id', 'salas.sala', 'predios.predio', 'tombamento', 'descricao', 'descricao_sugerida', 'num_serie', 'valor_inicial', 'valor_contabil', 'estado', 'responsavel')
+            ->leftJoin('salas', 'itens.sala_id', '=', 'salas.id')
+            ->leftJoin('predios', 'salas.predio_id', '=', 'predios.id')
+            ->where('salas.'.$field, 'like', $search)->groupBy('itens.id')->paginate(25);
+
         } else
         {
-            $itens = Item::where($field, 'like' , $search)->distinct()->paginate(25);
+            switch($field){
+                case "particular":
+                    if(!strcmp($search,'sim')){
+                        $search = 1;
+                    }
+                    $itens = Item::where($field, $search)->distinct()->paginate(25);
+                    break;
+                case "localizado":
+                    if(!strcmp($search,'sim')){
+                        $search = 1;
+                    }
+                    $itens = Item::where($field, $search)->distinct()->paginate(25);
+                    break;
+                default:
+                $itens = Item::where($field, 'like' , $search)->distinct()->paginate(25);
+            }
         }
+        // print_r($itens);
         return view('itens.index', compact('itens'));
 	}
 

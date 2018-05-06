@@ -1,4 +1,11 @@
 body{
+	background-color: rgb(169,169,169);
+	background-image: url(/img/ifma-bg.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+/* body{
 	background-image: url('/img/notebook-pen-table-blank-158771.jpeg');
 	background-position: center top;
 	background-repeat: no-repeat;
@@ -12,14 +19,19 @@ body{
 	background-position: left 120px;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-}
+} */
 .left{
 	margin-top: -10px;
+	margin-left: 20px;
 	float: left;
 }
 .right{
 	margin-top: 15px;
+	margin-right: 20px;
 	float: right;
+}
+.central{
+	margin-top: 60px;
 }
 .form-width{
 	width: 100%;
@@ -36,4 +48,7 @@ body{
 .buttom-index{
 	padding-top: 50px;
 	padding-bottom: 100px;
+}
+.footer-text{
+	color: gray;
 }

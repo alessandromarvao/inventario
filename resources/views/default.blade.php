@@ -28,19 +28,17 @@
 			</div>
 		</div>
 	</nav>
-	<main class="page">
-		<section class="container">
+	<main>
+		<section class="container central">
 			@yield('content')
 		</section>
 	</main>
 	<nav class="navbar navbar-inverse navbar-fixed-bottom">
-		<div class="container">
-			<div class="left">
-				<h3>Comissão de Inventário - <small>Alessandro Marvão Nascimento</small></h3>
-			</div>
-			<div class="right">
-				© 2018 Copyright: Todos os direitos reservados
-			</div>
+		<div class="left">
+			<h3 class="footer-text">Comissão de Inventário</small></h3>
+		</div>
+		<div class="right footer-text">
+			© 2018 Alessandro Marvão. Todos os direitos reservados.
 		</div>
 	</nav>
 	<script src="/js/app.js" charset="utf-8"></script>

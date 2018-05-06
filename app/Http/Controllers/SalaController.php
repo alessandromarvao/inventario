@@ -55,14 +55,6 @@ class SalaController extends Controller
 
         $sala->save();
 
-		// $input = [
-		// 	'_method' => $request->input('_method'),
-		// 	'_token' => $request->input('_token'),
-		// 	'predio_id' => $request->input('predio'),
-		// 	'sala' => $request->input('sala')
-		// ];
-		// Sala::create($input);
-
 		return response()->redirectToRoute('sala.index');
     }
 
@@ -122,17 +114,21 @@ class SalaController extends Controller
      */
     public function update(Request $request, $id)
     {
-		$sala = Sala::findOrFail($id);
+        $sala = Sala::findOrFail($id);
 
-		$input = [
-			'_method' => $request->input('_method'),
-			'_token' => $request->input('_token'),
-			'id' => $request->input('id'),
-			'predio_id' => $request->input('predio'),
-			'sala' => $request->input('sala')
-		];
+        $sala->id = $request->id;
+        $sala->predio_id = $request->predio;
 
-		$sala->update($input);
+		// $input = [
+		// 	'_method' => $request->input('_method'),
+		// 	'_token' => $request->input('_token'),
+		// 	'id' => $id,
+		// 	'predio_id' => $request->input('predio'),
+		// 	'sala' => $request->input('sala')
+        // ];
+        $sala->save();
+
+		// $sala->update($input);
 
 		return response()->redirectToRoute('sala.show', $id);
     }

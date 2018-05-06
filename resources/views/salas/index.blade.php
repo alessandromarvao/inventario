@@ -13,7 +13,7 @@
 			</select>
 			<input type="text" name="search" class="form-control">
 			<button type="submit"  class="btn btn-success ">Pesquisar</button>
-			@if(!strcmp(Route::currentRouteName(),'salas.search'))
+			@if(!strcmp(Route::currentRouteName(),'sala.search'))
 				<a href="/sala" class="btn btn-primary">Limpar</a>
 			@endif
 		</form>

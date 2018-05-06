@@ -35,9 +35,20 @@
 			<tbody>
 				@foreach($itens as $item)
 				<tr>
-					<td>{{ $item->id }}</td>
-					<td>{{ $item->sala->predio }}</td>
-					<td>{{ $item->sala->sala }}</td>
+					<td>{{ $item->id }}
+					</td>
+					<td>
+					@if(!empty($item->sala->predio->predio))
+						{{ $item->sala->predio->predio }}
+					@else
+						{{ $item->predio }}
+					@endif
+					</td>
+					@if(!empty($item->sala->sala))
+						<td>{{ $item->sala->sala }}</td>
+					@else
+						<td>{{ $item->sala }}</td>
+					@endif
 					<td>{{ $item->tombamento }}</td>
 					<td class="shorten">{{ $item->descricao }}</td>
 					<td><a href="{{route('item.show', $item->id)}}" class="btn btn-default btn-xs glyphicon glyphicon-plus"></a></td>
