@@ -15,7 +15,7 @@ class SalaController extends Controller
      */
     public function index()
     {
-        $salas = Sala::orderBy('predio')->paginate(10);
+        $salas = Sala::orderBy('predio_id')->paginate(10);
 
         return view('salas.index', compact('salas'));
     }

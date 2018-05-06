@@ -6,11 +6,7 @@
 </div>
 <div class="form-group">
     <label for="predio">Prédio:</label>
-	@if(!strcmp(Route::currentRouteName(),'sala.create'))
-	    <select name="predio" id="predio" class="form-control"></select>
-	@else
-		<input type="text" name="predio" id="predio" class="form-control" value="{{ $sala->predio ?? '' }}" placeholder="Digite aqui o prédio em que a sala pertence">
-	@endif
+    <select name="predio" id="predio" class="form-control"></select>
 </div>
 <div class="form-group">
     <label for="sala">Sala:</label>

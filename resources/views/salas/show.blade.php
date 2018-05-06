@@ -33,7 +33,7 @@ if(!empty($nome[1])){
     <tbody>
         <tr>
             <td>{{ $sala->id }}</td>
-            <td>{{ $sala->predio }}</td>
+            <td>{{ $sala->predio->predio }}</td>
             <td>{{ $sala->sala }}</td>
         </tr>
     </tbody>

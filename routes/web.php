@@ -23,7 +23,8 @@ Route::get('/sala/find', 'SalaController@search')->name('sala.search');
 
 Route::resources([
 	'item' => 'ItemController',
-	'sala' => 'SalaController'
+	'sala' => 'SalaController',
+	'predio' => 'PredioController'
 ]);
 
 // Route::resource('/sala', 'SalaController');

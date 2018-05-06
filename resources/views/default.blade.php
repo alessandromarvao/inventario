@@ -3,8 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>Inventário - Campus Barreirinhas</title>
-	<link rel="stylesheet" href="/css/app.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="/css/style.css">
+	<link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -17,9 +18,10 @@
 					<span class="icon-bar"></span>
 				</button>
 				<div class="navbar-left">
-					<a class="navbar-brand" href="/" >Home</a>
+					<a class="navbar-brand glyphicon glyphicon-home" href="/" ></a>
 				</div>
 				<div class="navbar-right">
+					<a class="navbar-brand" href="/predio">Prédios</a>
 					<a class="navbar-brand" href="/sala">Salas</a>
 					<a class="navbar-brand" href="/item">Itens</a>
 				</div>

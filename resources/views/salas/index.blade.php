@@ -31,7 +31,7 @@
 				@foreach($salas as $sala)
 				<tr>
 					<td>{{ $sala->id }}</td>
-					<td>{{ $sala->predio }}</td>
+					<td>{{ $sala->predio->predio }}</td>
 					<td>{{ $sala->sala }}</td>
 					<td><a href="{{ route('sala.show', $sala->id) }}" class="btn btn-xs btn-default glyphicon glyphicon-plus"></a></td>
 				</tr>
