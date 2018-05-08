@@ -19,23 +19,23 @@ if(!empty($nome[1])){
 			{!! csrf_field() !!}
 			<input type="hidden" name="_method" value="DELETE" />
         	<input type="submit" value="Excluir" class="btn btn-sm btn-info" >
-		</form>
+        </form>
+        <table class="table table-hover central">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Prédio</th>
+                    <th>Sala</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ $sala->id }}</td>
+                    <td>{{ $sala->predio->predio }}</td>
+                    <td>{{ $sala->sala }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Prédio</th>
-            <th>Sala</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ $sala->id }}</td>
-            <td>{{ $sala->predio->predio }}</td>
-            <td>{{ $sala->sala }}</td>
-        </tr>
-    </tbody>
-</table>
 @stop

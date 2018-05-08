@@ -52,7 +52,7 @@ class SalaController extends Controller
         $sala = new Sala;
         $sala->predio_id = $request->input('predio');
         $sala->sala = $request->input('sala');
-
+        $sala->visitada_em =  $request->data;
         $sala->save();
 
 		return response()->redirectToRoute('sala.index');
@@ -89,6 +89,14 @@ class SalaController extends Controller
             // print_r($salas);
             return view('salas.index')->with('salas', $salas);
             break;
+            case 'visitada':
+                if(!(strcmp($request->search, 'sim'))) {
+                    $salas = Sala::whereNotNull('visitada_em')->distinct()->paginate(10);
+                } else {
+                    $salas = Sala::whereNull('visitada_em')->distinct()->paginate(10);
+                }
+                return view('salas.index')->with('salas', $salas);
+            break;
         }
 
     }
@@ -118,14 +126,8 @@ class SalaController extends Controller
 
         $sala->id = $request->id;
         $sala->predio_id = $request->predio;
+        $sala->visitada_em = $request->data;
 
-		// $input = [
-		// 	'_method' => $request->input('_method'),
-		// 	'_token' => $request->input('_token'),
-		// 	'id' => $id,
-		// 	'predio_id' => $request->input('predio'),
-		// 	'sala' => $request->input('sala')
-        // ];
         $sala->save();
 
 		// $sala->update($input);

@@ -10,6 +10,7 @@
 			<select class="form-control" name="select">
 				<option value="predio">Prédio</option>
 				<option value="sala">Sala</option>
+				<option value="visitada">Foi visitada?</option>
 			</select>
 			<input type="text" name="search" class="form-control">
 			<button type="submit"  class="btn btn-success ">Pesquisar</button>
@@ -22,8 +23,9 @@
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>Prédio</th>
-					<th>Sala</th>
+					<th>Prédio:</th>
+					<th>Sala:</th>
+					<th>Visitada em:</th>
 					<th>Exibir</th>
 				</tr>
 			</thead>
@@ -37,6 +39,7 @@
 						<td>{{ $sala->predio }}</td>
 					@endif
 					<td>{{ $sala->sala }}</td>
+					<td>{{ $sala->visitada_em }}</td>
 					<td><a href="{{ route('sala.show', $sala->id) }}" class="btn btn-xs btn-default glyphicon glyphicon-plus"></a></td>
 				</tr>
 				@endforeach

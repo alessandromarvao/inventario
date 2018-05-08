@@ -72,10 +72,6 @@ class ItemController extends Controller
             ->leftJoin('predios', 'salas.predio_id', 'predios.id')
             ->groupBy('itens.id')
             ->where('predios.'.$field, 'like', $search)->paginate(25);
-            // $itens = Item::select('itens.*', 'salas.*', 'predios.*')
-            // ->Join('salas', 'itens.sala_id', '=', 'salas.id')
-            // ->Join('predios', 'salas.predio_id', '=', 'predios.id')
-            // ->where('predios.'.$field, 'like', $search)->paginate(25);
         } 
         elseif(!strcmp($field,'sala'))
         {
@@ -90,12 +86,16 @@ class ItemController extends Controller
                 case "particular":
                     if(!strcmp($search,'sim')){
                         $search = 1;
+                    } else {
+                        $search = 0;
                     }
                     $itens = Item::where($field, $search)->distinct()->paginate(25);
                     break;
                 case "localizado":
                     if(!strcmp($search,'sim')){
                         $search = 1;
+                    } else {
+                        $search = 0;
                     }
                     $itens = Item::where($field, $search)->distinct()->paginate(25);
                     break;

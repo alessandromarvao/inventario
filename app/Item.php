@@ -12,6 +12,7 @@ class Item extends Model
 			'id',
 			'descricao',
 			'descricao_sugerida',
+			'inventario',
 			'tombamento',
 			'num_serie',
 			'valor_inicial',

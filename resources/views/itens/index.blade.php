@@ -12,6 +12,8 @@
 				<option value="sala">Sala</option>
 				<option value="tombamento">Tombamento</option>
 				<option value="descricao">Descrição</option>
+				<option value="particular">Item particular?</option>
+				<option value="localizado">Item localizado?</option>
 			</select>
 			<input type="text" name="search" class="form-control">
 			<button type="submit" class="btn btn-success ">Pesquisar</button>

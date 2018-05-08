@@ -23,5 +23,12 @@
             });
         });
     });
+    $('select[name=visitada]').change(function(){
+        if($(this).val()==true){
+            $('#exibe_data').attr('class', 'form-group');
+        } else {
+            $('#exibe_data').attr('class', 'hidden');
+        }
+    });
 </script>
 @endpush

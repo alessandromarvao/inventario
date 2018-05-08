@@ -9,7 +9,8 @@ class Sala extends Model
 	public $timestamps = false;
 	protected $fillable = [
 		'sala',
-		'predio'
+		'predio',
+		'visitada_em'
 	];
 
 	public function itens(){
