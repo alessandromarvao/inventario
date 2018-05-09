@@ -23,11 +23,12 @@ class SalaController extends Controller
     /**
      * Exibe as salas de acordo com o prédio selecionado
      *
-     * @param string $predio
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function showSalas($predio){
-        $salas = Sala::select('id', 'sala')->where('predio',$predio)->get();
+    public function showSalas($id){
+        // $salas = Sala::select('id', 'sala')->where('predio',$predio)->get();
+        $salas = Sala::findOrFail($id)->get();
         return json_encode($salas);
     }
 
@@ -67,7 +68,10 @@ class SalaController extends Controller
     public function show($id)
     {
         $sala = Sala::findOrFail($id);
-        return view('salas.show', compact('sala'));
+        echo "<pre>";
+        print_r($sala);
+        echo "</pre>";
+        // return view('salas.show', compact('sala'));
     }
 
     public function search(Request $request)
