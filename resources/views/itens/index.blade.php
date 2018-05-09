@@ -1,9 +1,10 @@
 @extends('default')
 
 @section('content')
-<h2>Item</h2>
-<div class="panel panel-default">
+<div class="panel panel-default central">
 	<div class="panel-body">
+		<h2>Item</h2>
+		<hr>
 		<label for="form">Pesquisar:</label>
 		<form action="{{ route('item.search') }} " method="GET" class="form-inline form-width"  id="form">
 			{{-- {!! csrf_field() !!} --}}
@@ -40,7 +41,7 @@
 					<td>{{ $item->id }}
 					</td>
 					<td>
-					@if(!empty($item->sala->predio->predio))
+					@if(!empty($item->sala->predio->predio)) {{-- Confere o prédio do index ou da pesquisa por prédio do index --}}
 						{{ $item->sala->predio->predio }}
 					@else
 						{{ $item->predio }}

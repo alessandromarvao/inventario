@@ -1,9 +1,10 @@
 @extends('default')
 
 @section('content')
-<h2>Salas</h2>
 <div class="panel panel-default">
 	<div class="panel-body">
+		<h2>Salas</h2>
+		<hr>
 		<label for="form">Pesquisar por:</label>
         <form action="{{ route('sala.search') }}"  method="GET" class="form-inline form-width"id="form">
 			{{-- {!! csrf_field() !!} --}}

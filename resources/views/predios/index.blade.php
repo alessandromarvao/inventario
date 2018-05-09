@@ -1,9 +1,9 @@
 @extends('default')
 
 @section('content')
-<h2>Prédios</h2>
-<div class="panel panel-default">
+<div class="panel panel-default central">
 	<div class="panel-body">
+		<h2>Prédios</h2>
 		<a href="{{ route('predio.create') }}" class="btn btn-sm btn-default btn-novo">Novo</a>
 		<table class="table table-responsive table-condensed table-striped table-hover">
 			<thead>

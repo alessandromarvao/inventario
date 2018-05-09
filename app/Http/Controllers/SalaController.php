@@ -27,7 +27,7 @@ class SalaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showSalas($id){
-        // $salas = Sala::select('id', 'sala')->where('predio',$predio)->get();
+        $salas = Sala::select('id', 'sala')->where('predio_id',$id)->get();
         $salas = Sala::findOrFail($id)->get();
         return json_encode($salas);
     }
@@ -68,10 +68,7 @@ class SalaController extends Controller
     public function show($id)
     {
         $sala = Sala::findOrFail($id);
-        echo "<pre>";
-        print_r($sala);
-        echo "</pre>";
-        // return view('salas.show', compact('sala'));
+        return view('salas.show', compact('sala'));
     }
 
     public function search(Request $request)

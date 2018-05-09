@@ -20,7 +20,8 @@ class Item extends Model
 			'estado',
 			'responsavel',
 			'particular',
-			'localizado'
+			'localizado',
+			'observacao'
 		];
 
 		public function sala(){

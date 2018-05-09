@@ -1,11 +1,15 @@
 @extends('default')
 
 @section('content')
-<h2>Item <small>\ Editar</small></h2>
-<form action="{{ route('item.update', $item->id) }}" class="form" method="post">
-	<input type="hidden" name="_method" value="PUT" />
-    @include('itens.form');
-</form>
+<div class="panel panel-default central">
+	<div class="panel-body">
+		<h2>Editar</h2>
+		<form action="{{ route('item.update', $item->id) }}" class="form" method="post">
+			<input type="hidden" name="_method" value="PUT" />
+			@include('itens.form');
+		</form>
+	</div>
+</div>
 @stop
 
 @push('scripts')
@@ -22,8 +26,10 @@
 				$.each(JSON.parse(salas), function(key, value){
 					$('select[name=sala]').append("<option value='" + value.id + "'>" + value.sala + "</option>");
 				});
+				// $('select[name=sala]').prop('selectedIndex', idSala);
 			});
 		});
+
 
 	});
 </script>

@@ -129,11 +129,13 @@ class ItemController extends Controller
     public function update(Request $request, $id)
     {
         $item = Item::findOrFail($id);
+        $item->inventario = $request->inventario;
+        $item->descricao = $request->descricao;
+        $item->descricao_sugerida = $request->descricao_sugerida;
         $item->sala_id = $request->sala;
         $item->tombamento = $request->tombamento;
-        $item->situacao = $request->situacao;
         $item->estado = $request->estado;
-        $item->status = $request->status;
+        $item->observacao = $request->observacao;
 
         $item->save();
 

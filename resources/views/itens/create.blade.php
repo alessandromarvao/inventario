@@ -1,10 +1,14 @@
 @extends('default')
 
 @section('content')
-<h2>Item <small>\ Novo</small></h2>
-<form action="{{ route('item.store') }}" method="post">
-    @include('itens.form')
-</form>
+<div class="panel panel-default central">
+	<div class="panel-body">
+		<h2>Novo <small> Item </small></h2>
+		<form action="{{ route('item.store') }}" method="post">
+			@include('itens.form')
+		</form>
+	</div>
+</div>
 @stop
 
 @push('scripts')
