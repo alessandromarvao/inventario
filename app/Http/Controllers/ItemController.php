@@ -43,6 +43,7 @@ class ItemController extends Controller
         $item->sala_id = $request->sala;
         $item->tombamento = $request->tombamento;
         $item->estado = $request->estado;
+        $item->localizado = $request->localizado;
         $item->observacao = $request->observacao;
 
         $item->save();
@@ -137,11 +138,28 @@ class ItemController extends Controller
         $item->sala_id = $request->sala;
         $item->tombamento = $request->tombamento;
         $item->estado = $request->estado;
+        $item->localizado = $request->localizado;
         $item->observacao = $request->observacao;
 
         $item->save();
 
         return response()->redirectToRoute('item.index');
+    }
+
+    /**
+     * 
+     * Update the resource LOCALIZADO in storage.
+     *  
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function localizado($request){
+        return $request->id;
+        // $itens = Item::findOrFail($request->input('id'));
+        // $itens->localizado = $request->input('localizado');
+        // $itens->save();
+
+        // return response()->redirectToRoute('item.index');
+        // return view('itens.index')->with('itens', $itens);
     }
 
     /**

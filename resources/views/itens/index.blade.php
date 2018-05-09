@@ -32,6 +32,7 @@
 					<th>Sala</th>
 					<th>Tombamento</th>
 					<th>Descrição</th>
+					<th>Não Localizado</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -54,6 +55,13 @@
 					@endif
 					<td>{{ $item->tombamento }}</td>
 					<td class="shorten">{{ $item->descricao }}</td>
+					<td class="shorten">
+						@if($item->localizado)
+							<input type="checkbox" class='checkbox' value='{{ $item->id }}' checked>
+						@else 
+							<input type="checkbox" class='checkbox' value='{{ $item->id }}'>
+						@endif
+					</td>
 					<td><a href="{{route('item.show', $item->id)}}" class="btn btn-default btn-xs glyphicon glyphicon-plus"></a></td>
 				</tr>
 				@endforeach
@@ -71,6 +79,21 @@
 		moreText: 'extender',
 		lessText: 'recolher',
 		showChars: 60
+	});
+	$('.checkbox').click(function(){
+		var id = $(this).val();
+		var checkbox = "";
+
+		// Item não localizado?
+		if(this.checked){
+			checkbox = 1; //Sim
+		} else {
+			checkbox = 0; //Não
+		}
+
+		$.get('/itens/'+id+'/'+checkbox, function(predios){
+			alert(value.id);
+		});
 	});
 </script>
 @endpush

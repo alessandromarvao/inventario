@@ -20,6 +20,7 @@ Route::get('/', function ()
 // Route::resource('item', 'ItemController');
 Route::get('/item/find', 'ItemController@search')->name('item.search');
 Route::get('/sala/find', 'SalaController@search')->name('sala.search');
+Route::get('itens/{id}/{value}', 'ItemController@localizado')->name('itens.get');
 
 Route::resources([
 	'item' => 'ItemController',
