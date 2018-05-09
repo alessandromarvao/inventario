@@ -28,7 +28,8 @@ class SalaController extends Controller
      */
     public function showSalas($id){
         $salas = Sala::select('id', 'sala')->where('predio_id',$id)->get();
-        $salas = Sala::findOrFail($id)->get();
+        // $salas = Sala::findOrFail($id)->get();
+
         return json_encode($salas);
     }
 

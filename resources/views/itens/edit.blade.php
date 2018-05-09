@@ -17,16 +17,21 @@
 <script type="text/javascript" charset="utf-8">
 	$('document').ready(function(){
 		predio();
-
+		
 		$('select[name=predio]').hover(function(){
-			var predio = $(this).val();
+			var predioID = $(this).val();
+			var idSala = $('#idSala').val();
+			var selectSala = $('select[name=sala]');
 
-			$.get('/salas/' + predio, function(salas){
-				$('select[name=sala]').empty();
+			$.get('/salas/' + predioID, function(salas){
+				selectSala.empty();
 				$.each(JSON.parse(salas), function(key, value){
-					$('select[name=sala]').append("<option value='" + value.id + "'>" + value.sala + "</option>");
+					if(value.id==idSala){
+						selectSala.append("<option value='" + value.id + "' selected>" + value.sala + "</option>");
+					} else {
+						selectSala.append("<option value='" + value.id + "'>" + value.sala + "</option>");
+					}
 				});
-				// $('select[name=sala]').prop('selectedIndex', idSala);
 			});
 		});
 

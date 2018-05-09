@@ -37,12 +37,13 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $item = new Item;
-        $item->id = $request->id;
+        $item->descricao = $request->descricao;
+        $item->descricao_sugerida = $request->descricao_sugerida;
+        $item->responsavel = $request->responsavel;
         $item->sala_id = $request->sala;
         $item->tombamento = $request->tombamento;
-        $item->situacao = $request->situacao;
         $item->estado = $request->estado;
-        $item->status = $request->status;
+        $item->observacao = $request->observacao;
 
         $item->save();
 
@@ -132,6 +133,7 @@ class ItemController extends Controller
         $item->inventario = $request->inventario;
         $item->descricao = $request->descricao;
         $item->descricao_sugerida = $request->descricao_sugerida;
+        $item->responsavel = $request->responsavel;
         $item->sala_id = $request->sala;
         $item->tombamento = $request->tombamento;
         $item->estado = $request->estado;
