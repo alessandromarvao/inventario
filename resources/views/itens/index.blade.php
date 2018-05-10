@@ -5,12 +5,16 @@
 	<div class="panel-body">
 		<h2>Item</h2>
 		<hr>
+		<div class="alert alert-success hidden" id="success-msg" role="alert">
+			Cadastro realizado com sucesso!
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		</div>
 		<label for="form">Pesquisar:</label>
 		<form action="{{ route('item.search') }} " method="GET" class="form-inline form-width"  id="form">
 			{{-- {!! csrf_field() !!} --}}
 			<select class="form-control" name="select">
-				<option value="predio">Prédio</option>
 				<option value="sala">Sala</option>
+				<option value="predio">Prédio</option>
 				<option value="tombamento">Tombamento</option>
 				<option value="descricao">Descrição</option>
 				<option value="particular">Item particular?</option>
@@ -27,20 +31,17 @@
 		<table class="table table-responsive table-condensed table-striped table-hover">
 			<thead>
 				<tr>
-					<th>#</th>
 					<th>Prédio</th>
 					<th>Sala</th>
-					<th>Tombamento</th>
 					<th>Descrição</th>
-					<th>Não Localizado</th>
+					<th>Tombamento</th>
+					<th>Situação</th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($itens as $item)
 				<tr>
-					<td>{{ $item->id }}
-					</td>
 					<td>
 					@if(!empty($item->sala->predio->predio)) {{-- Confere o prédio do index ou da pesquisa por prédio do index --}}
 						{{ $item->sala->predio->predio }}
@@ -48,18 +49,20 @@
 						{{ $item->predio }}
 					@endif
 					</td>
+					<td>
 					@if(!empty($item->sala->sala))
-						<td>{{ $item->sala->sala }}</td>
+						{{ $item->sala->sala }}
 					@else
-						<td>{{ $item->sala }}</td>
+						{{ $item->sala }}
 					@endif
-					<td>{{ $item->tombamento }}</td>
+					</td>
 					<td class="shorten">{{ $item->descricao }}</td>
-					<td class="shorten">
+					<td>{{ $item->tombamento }}</td>
+					<td>
 						@if($item->localizado)
-							<input type="checkbox" class='checkbox' value='{{ $item->id }}' checked>
-						@else 
-							<input type="checkbox" class='checkbox' value='{{ $item->id }}'>
+							<input type="checkbox" class='checkbox' value='{{ $item->id }}' checked> Não Localizado
+						@else
+							<input type="checkbox" class='checkbox' value='{{ $item->id }}'> Não Localizado
 						@endif
 					</td>
 					<td><a href="{{route('item.show', $item->id)}}" class="btn btn-default btn-xs glyphicon glyphicon-plus"></a></td>
@@ -92,7 +95,14 @@
 		}
 
 		$.get('/itens/'+id+'/'+checkbox, function(predios){
-			alert(value.id);
+			var successMsg = $('#success-msg');
+			successMsg.alert();
+
+			// if(successMsg.attr('class').indexOf('hidden')==20){
+			// 	successMsg.removeClass('hidden');
+			// } else {
+			// 	successMsg.addClass('hidden');
+			// }
 		});
 	});
 </script>

@@ -4,6 +4,7 @@
     <input type="text" name="id" id="id" class="form-control" value="{{ $item->id ?? '' }}" placeholder="Digite aqui o número da sala">
     <input type="text" name="idPredio" id="idPredio" class="form-control" value="{{ $item->sala->predio->id ?? '' }}" placeholder="Digite aqui o número da sala">
     <input type="text" name="idSala" id="idSala" class="form-control" value="{{ $item->sala->id ?? '' }}" placeholder="Digite aqui o número da sala">
+    <input type="text" name="input_estado" id="input_estado" class="form-control" value="{{ $item->estado ?? '' }}" placeholder="Digite aqui o número da sala">
 </div>
 <div class="form-group">
     <label for="inventario">Inventário:</label>
@@ -34,11 +35,16 @@
     <input type="text" name="tombamento" id="tombamento" class="form-control" value="{{ $item->tombamento ?? '' }}" placeholder="Digite o código do tombamento">
 </div>
 <div class="form-group">
-    <label for="estado">Estado de Conservação:</label>
+    <label for="num_serie">Nº de Série:</label>
+    <input type="text" name="num_serie" id="num_serie" class="form-control" value="{{ $item->num_serie ?? '' }}" placeholder="Digite o número de série do equipamento">
+</div>
+<div class="form-group">
+    <label for="estado">Situação:</label>
     <select name="estado" id="estado" class="form-control">
         <option value="Bom">Bom</option>
         <option value="Ocioso">Ocioso</option>
-        <option value="Inservível">Inservível ou com defeito</option>
+        <option value="Inservível ou com defeito">Inservível ou com defeito</option>
+        <option value="Particular">Particular</option>
     </select>
 </div>
 <div class="form-group">

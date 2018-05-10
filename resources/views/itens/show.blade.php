@@ -16,24 +16,30 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>#</th>
+                <th>Inventário</th>
                 <th>Prédio</th>
                 <th>Sala</th>
                 <th>Tombamento</th>
                 <th>Descrição</th>
                 <th>Estado</th>
-                <th>Data de Entrada</th>
+                <th>Situação</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>{{ $item->id }}</td>
+                <td>{{ $item->inventario }}</td>
                 <td>{{ $item->sala->predio->predio }}</td>
                 <td>{{ $item->sala->sala }}</td>
                 <td>{{ $item->tombamento }}</td>
                 <td>{{ $item->descricao }}</td>
                 <td>{{ $item->estado }}</td>
-                <td>{{ date_format(date_create(explode(' ', $item->data_entrada)[0]), 'd/m/Y') }}</td>
+                <td>
+                    @if($item->localizado==1)
+                        Não localizado
+                    @else
+                        Localizado
+                    @endif
+                </td>
             </tr>
         </tbody>
     </table>

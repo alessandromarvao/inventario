@@ -11,3 +11,30 @@ function predio(){
     });
 };
 
+function createSalas(value) {
+    var predio = value;
+
+    $.get('/salas/' + predio, function(salas){
+        $('select[name=sala]').empty();
+        $.each(JSON.parse(salas), function(key, value){
+            $('select[name=sala]').append("<option value='" + value.id + "'>" + value.sala + "</option>");
+        });
+    });
+};
+
+function getSala(){
+    var predioID = $('input[name=idPredio]').val();
+    var idSala = $('#idSala').val();
+    var selectSala = $('select[name=sala]');
+    
+    $.get('/salas/' + predioID, function(salas){
+        selectSala.empty();
+        $.each(JSON.parse(salas), function(key, value){
+            if(value.id==idSala){
+                selectSala.append("<option value='" + value.id + "' selected>" + value.sala + "</option>");
+            } else {
+                selectSala.append("<option value='" + value.id + "'>" + value.sala + "</option>");
+            }
+        });
+    });
+};

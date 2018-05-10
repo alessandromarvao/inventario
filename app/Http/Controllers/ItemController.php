@@ -42,6 +42,7 @@ class ItemController extends Controller
         $item->responsavel = $request->responsavel;
         $item->sala_id = $request->sala;
         $item->tombamento = $request->tombamento;
+        $item->num_serie = $request->num_serie;
         $item->estado = $request->estado;
         $item->localizado = $request->localizado;
         $item->observacao = $request->observacao;
@@ -69,7 +70,7 @@ class ItemController extends Controller
         $field = $request->input('select');
         if(!strcmp($field,'predio'))
         {
-            $itens = Item::select('itens.id', 'sala_id', 'salas.sala', 'predios.predio', 'tombamento', 'descricao', 'descricao_sugerida', 'num_serie', 'valor_inicial', 'valor_contabil', 'estado', 'responsavel')
+            $itens = Item::select('itens.id', 'sala_id', 'salas.sala', 'predios.predio', 'tombamento', 'descricao', 'descricao_sugerida', 'num_serie', 'valor_inicial', 'valor_contabil', 'estado', 'localizado', 'responsavel')
             ->leftJoin('salas', 'itens.sala_id', 'salas.id')
             ->leftJoin('predios', 'salas.predio_id', 'predios.id')
             ->groupBy('itens.id')
@@ -77,7 +78,7 @@ class ItemController extends Controller
         } 
         elseif(!strcmp($field,'sala'))
         {
-            $itens = Item::select('itens.id', 'sala_id', 'salas.sala', 'predios.predio', 'tombamento', 'descricao', 'descricao_sugerida', 'num_serie', 'valor_inicial', 'valor_contabil', 'estado', 'responsavel')
+            $itens = Item::select('itens.id', 'sala_id', 'salas.sala', 'predios.predio', 'tombamento', 'descricao', 'descricao_sugerida', 'num_serie', 'valor_inicial', 'valor_contabil', 'estado', 'localizado', 'responsavel')
             ->leftJoin('salas', 'itens.sala_id', '=', 'salas.id')
             ->leftJoin('predios', 'salas.predio_id', '=', 'predios.id')
             ->where('salas.'.$field, 'like', $search)->groupBy('itens.id')->paginate(25);
@@ -137,8 +138,8 @@ class ItemController extends Controller
         $item->responsavel = $request->responsavel;
         $item->sala_id = $request->sala;
         $item->tombamento = $request->tombamento;
+        $item->num_serie = $request->num_serie;
         $item->estado = $request->estado;
-        $item->localizado = $request->localizado;
         $item->observacao = $request->observacao;
 
         $item->save();
@@ -152,11 +153,10 @@ class ItemController extends Controller
      *  
      * @param  \Illuminate\Http\Request  $request
      */
-    public function localizado($request){
-        return $request->id;
-        // $itens = Item::findOrFail($request->input('id'));
-        // $itens->localizado = $request->input('localizado');
-        // $itens->save();
+    public function localizado($id, $value){
+        $itens = Item::findOrFail($id);
+        $itens->localizado = $value;
+        $itens->save();
 
         // return response()->redirectToRoute('item.index');
         // return view('itens.index')->with('itens', $itens);

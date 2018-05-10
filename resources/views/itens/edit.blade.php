@@ -18,24 +18,24 @@
 	$('document').ready(function(){
 		predio();
 		
-		$('select[name=predio]').hover(function(){
-			var predioID = $(this).val();
-			var idSala = $('#idSala').val();
-			var selectSala = $('select[name=sala]');
+		getSala();
 
-			$.get('/salas/' + predioID, function(salas){
-				selectSala.empty();
-				$.each(JSON.parse(salas), function(key, value){
-					if(value.id==idSala){
-						selectSala.append("<option value='" + value.id + "' selected>" + value.sala + "</option>");
-					} else {
-						selectSala.append("<option value='" + value.id + "'>" + value.sala + "</option>");
-					}
-				});
-			});
+		$('select[name=predio]').change(function(){
+			getSala();
 		});
 
+		var estado = $('#input_estado').val();
+		
+		var $select = $('#estado');
 
+		var i=0;
+		$select.find('option').each(function(index){
+			if($(this).text() == estado){
+				$select.prop('selectedIndex',i);
+				return false;
+			}
+			i++;
+		});
 	});
 </script>
 @endpush

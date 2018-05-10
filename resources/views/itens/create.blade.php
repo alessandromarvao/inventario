@@ -17,15 +17,10 @@
 	$('document').ready(function(){
 		predio();
 
-		$('select[name=predio]').hover(function(){
-			var predio = $(this).val();
+		createSalas(1);
 
-			$.get('/salas/' + predio, function(salas){
-				$('select[name=sala]').empty();
-				$.each(JSON.parse(salas), function(key, value){
-					$('select[name=sala]').append("<option value='" + value.id + "'>" + value.sala + "</option>");
-				});
-			});
+		$('select[name=predio]').change(function(){
+			createSalas($(this).val());
 		});
 
 	});
