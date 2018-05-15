@@ -40,7 +40,11 @@
 						<td>{{ $sala->predio }}</td>
 					@endif
 					<td>{{ $sala->sala }}</td>
-					<td>{{ $sala->visitada_em }}</td>
+					<td>
+						@if(!empty($sala->visitada_em))
+							{{ date('d/m/Y', strtotime($sala->visitada_em)) ?? '' }}
+						@endif 
+					</td>
 					<td><a href="{{ route('sala.edit', $sala->id) }}" class="btn btn-xs btn-default glyphicon glyphicon-plus"></a></td>
 				</tr>
 				@endforeach

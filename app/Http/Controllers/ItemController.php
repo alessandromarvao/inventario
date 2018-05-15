@@ -46,6 +46,7 @@ class ItemController extends Controller
         $item->estado = $request->estado;
         $item->localizado = $request->localizado;
         $item->observacao = $request->observacao;
+        $item->novo = 1;
 
         $item->save();
 
@@ -96,9 +97,9 @@ class ItemController extends Controller
                     break;
                 case "localizado":
                     if(!strcmp($search,'sim')){
-                        $search = 1;
-                    } else {
                         $search = 0;
+                    } else {
+                        $search = 1;
                     }
                     $itens = Item::where($field, $search)->distinct()->paginate(25);
                     break;

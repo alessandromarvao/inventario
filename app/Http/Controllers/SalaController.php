@@ -134,7 +134,7 @@ class SalaController extends Controller
 
 		// $sala->update($input);
 
-		return response()->redirectToRoute('sala.show', $id);
+		return response()->redirectToRoute('sala.index');
     }
 
     /**

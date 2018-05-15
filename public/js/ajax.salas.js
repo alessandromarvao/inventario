@@ -11,8 +11,8 @@ function predio(){
     });
 };
 
-function createSalas(value) {
-    var predio = value;
+function createSalas(valor) {
+    var predio = valor;
 
     $.get('/salas/' + predio, function(salas){
         $('select[name=sala]').empty();
