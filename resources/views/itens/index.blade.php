@@ -16,9 +16,10 @@
 				<option value="sala">Sala</option>
 				<option value="predio">Prédio</option>
 				<option value="tombamento">Tombamento</option>
+				<option value="inventario">Inventário</option>
 				<option value="descricao">Descrição</option>
 				<option value="particular">Item particular?</option>
-				<option value="localizado">Item localizado?</option>
+				<option value="localizado">Não localizado?</option>
 			</select>
 			<input type="text" name="search" class="form-control">
 			<button type="submit" class="btn btn-success ">Pesquisar</button>
@@ -35,6 +36,7 @@
 					<th>Sala</th>
 					<th>Descrição</th>
 					<th>Tombamento</th>
+					<th>Inventário</th>
 					<th>Situação</th>
 					<th></th>
 				</tr>
@@ -58,6 +60,7 @@
 					</td>
 					<td class="shorten">{{ $item->descricao }}</td>
 					<td>{{ $item->tombamento }}</td>
+					<td>{{ $item->inventario ?? '-'}}</td>
 					<td>
 						@if($item->localizado)
 							<input type="checkbox" class='checkbox' value='{{ $item->id }}' checked> Não Localizado

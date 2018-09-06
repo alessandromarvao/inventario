@@ -7,11 +7,13 @@
         <a href="/item" class="btn btn-sm btn-default">Voltar</a>
         <a href="{{ route('item.edit', $item->id) }}" class="btn btn-sm btn-default">Editar</a>
         {{-- <a href="{{ route('item.destroy', $item->id) }}" class="btn btn-sm btn-info">Excluir</a> --}}
+        {{--
         <form class="form-horizontal" action="{{ route('item.destroy', $item->id) }}" method="post" style="display: inline-block">
 			{!! csrf_field() !!}
 			<input type="hidden" name="_method" value="DELETE" />
         	<input type="submit" value="Excluir" class="btn btn-sm btn-info" >
-		</form>
+        </form>
+        --}}
     </div>
     <table class="table table-hover">
         <thead>

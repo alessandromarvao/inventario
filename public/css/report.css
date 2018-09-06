@@ -1,0 +1,29 @@
+.header
+{
+    margin-top: -15px;  
+}
+.logo
+{
+    float: left;
+}
+.logo img
+{
+    width: 90px;
+}
+.title
+{
+    margin-bottom: -20px;
+}
+.subtitle
+{
+    margin-top: 22px;
+    margin-bottom: -5px;
+}
+.report-title
+{
+    text-align: center;
+}
+.table-width
+{
+    width: 100%;
+}

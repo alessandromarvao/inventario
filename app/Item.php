@@ -22,7 +22,8 @@ class Item extends Model
 			'particular',
 			'localizado',
 			'observacao',
-			'novo'
+			'novo',
+			'origem'
 		];
 
 		public function sala(){

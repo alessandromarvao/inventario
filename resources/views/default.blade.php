@@ -24,6 +24,7 @@
 					<a class="navbar-brand" href="/predio">Prédios</a>
 					<a class="navbar-brand" href="/sala">Salas</a>
 					<a class="navbar-brand" href="/item">Itens</a>
+					<a class="navbar-brand" href="/relatorios">Relatórios</a>
 				</div>
 			</div>
 		</div>

@@ -22,6 +22,14 @@ Route::get('/item/find', 'ItemController@search')->name('item.search');
 Route::get('/sala/find', 'SalaController@search')->name('sala.search');
 Route::get('itens/{id}/{value}', 'ItemController@localizado')->name('itens.get');
 
+Route::prefix('/relatorios')->group(function(){
+	Route::get('/', function(){
+		return view('relatorios.index');
+	});
+	Route::get('/listar', 'RelatorioController@listar')->name('relatorio.listar');
+	Route::get('/listarSituacoes', 'RelatorioController@listarSituacoes')->name('relatorio.situacao');
+});
+
 Route::resources([
 	'item' => 'ItemController',
 	'sala' => 'SalaController',

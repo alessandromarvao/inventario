@@ -45,7 +45,7 @@
 							{{ date('d/m/Y', strtotime($sala->visitada_em)) ?? '' }}
 						@endif 
 					</td>
-					<td><a href="{{ route('sala.edit', $sala->id) }}" class="btn btn-xs btn-default glyphicon glyphicon-plus"></a></td>
+					<td><a href="{{ route('sala.show', $sala->id) }}" class="btn btn-xs btn-default glyphicon glyphicon-plus"></a></td>
 				</tr>
 				@endforeach
 			</tbody>

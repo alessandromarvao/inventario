@@ -15,7 +15,7 @@ class SalaController extends Controller
      */
     public function index()
     {
-        $salas = Sala::orderBy('predio_id')->paginate(10);
+        $salas = Sala::orderBy('predio_id')->orderBy('predio_id', 'asc')->orderBy('sala', 'asc')->paginate(10);
 
         return view('salas.index', compact('salas'));
     }
@@ -27,7 +27,7 @@ class SalaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showSalas($id){
-        $salas = Sala::select('id', 'sala')->where('predio_id',$id)->get();
+        $salas = Sala::select('id', 'sala')->where('predio_id',$id)->orderBy('sala', 'asc')->get();
         // $salas = Sala::findOrFail($id)->get();
 
         return json_encode($salas);
@@ -79,7 +79,7 @@ class SalaController extends Controller
 
         switch ($field) {
             case 'sala':
-            $salas = Sala::where($field, 'like' , $search)->distinct()->paginate(10);
+            $salas = Sala::where($field, 'like' , $search)->distinct()->orderBy('sala', 'asc')->paginate(10);
             return view('salas.index')->with('salas', $salas);
             break;
 
@@ -127,12 +127,11 @@ class SalaController extends Controller
         $sala = Sala::findOrFail($id);
 
         $sala->id = $request->id;
+        $sala->sala = $request->sala;
         $sala->predio_id = $request->predio;
         $sala->visitada_em = $request->data;
 
         $sala->save();
-
-		// $sala->update($input);
 
 		return response()->redirectToRoute('sala.index');
     }
