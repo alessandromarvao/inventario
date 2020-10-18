@@ -3,8 +3,10 @@
 /storage/*.key
 /vendor
 /.idea
+/laradock_inventario
 Homestead.json
 Homestead.yaml
 .env
 inventario.sql
 composer.lock
+*.sql

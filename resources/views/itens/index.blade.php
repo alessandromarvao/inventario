@@ -15,6 +15,7 @@
 			<select class="form-control" name="select">
 				<option value="sala">Sala</option>
 				<option value="predio">Prédio</option>
+				<option value="num_serie">Número de série</option>
 				<option value="tombamento">Tombamento</option>
 				<option value="inventario">Inventário</option>
 				<option value="descricao">Descrição</option>
